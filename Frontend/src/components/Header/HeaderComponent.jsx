@@ -5,8 +5,19 @@ import Slideshow from '../Slideshow/Slideshow';
 import { NavLink, useNavigate } from 'react-router-dom';
 import logo from '../../assets/images/WeGo.svg'; 
 
-
-
+export default function HeaderComponent() {
+    return (
+     
+        <header id='globalHeader'>
+          <div id='headerContent'>
+            <img src={logo} alt="WeGo Logo" />
+            <div id='navContainer'>
+              <NavComponent />
+            </div>
+          </div>
+        </header>
+    );
+}
 
 
 

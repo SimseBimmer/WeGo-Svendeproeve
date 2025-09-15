@@ -1,9 +1,31 @@
 @import '../../styles/variables.scss';
 
-#GlobalHeader{
-    
-    img{
-        width: 85px;
-        height: auto;
+#globalHeader {
+    background-color: $color-white;    
+    border-bottom: 1px solid $color-light-grey;
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem 0 0 0;
+
+    #headerContent {
+        display: flex;
+        gap: 2.5rem;
+        width: 95%;
+        margin: 0 auto;
+
+        img {
+            width: 100px;
+            height: auto;
+            padding: 0 0 1rem 0;
+        }
+
+        #navContainer {
+            height: fit-content;
+            margin: auto 0 0 0;
+            width: 100%;
+
+        }
     }
+
 }
