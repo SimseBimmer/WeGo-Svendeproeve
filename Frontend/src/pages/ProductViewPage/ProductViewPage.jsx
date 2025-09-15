@@ -3,7 +3,6 @@ import './ProductViewPage.scss';
 import HeaderComponent from '../../components/Header/HeaderComponent.jsx';
 import BreadcrumbNav from '../../components/BreadcrumbNav/BreadcrumbNav.jsx';
 import { useParams } from 'react-router-dom';
-import ColorHeartWhite from '../../assets/images/FavoriteWhite.svg';
 import CommentSection from '../../components/CommentSection/CommentSection.jsx';
 
 export default function ProductViewPage() {
@@ -63,7 +62,6 @@ export default function ProductViewPage() {
                         <header id="recipeCardHeader">
                             <h2>Opskrift</h2>
                             <div id="recipeCardLikes">
-                                <img src={ColorHeartWhite} alt="Antal likes" />
                             </div>
                         </header>
                         <div id="productInfoBox">

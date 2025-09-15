@@ -1,0 +1,11 @@
+id,firstname,lastname,email,password,description,imageUrl,refreshToken,isActive
+1,Admin,Adminsen,info@webudvikler.dk,password,"Adminstrativ kodenørd","https://i.pravatar.cc/150?u=84",1234,true
+2,Emma,Hansen,emma.hansen@example.com,password123,"Student og naturelsker.","https://i.pravatar.cc/150?u=78",token123,true
+3,Oliver,Jensen,oliver.jensen@example.com,password123,"Teknologiinteresseret fotograf.","https://i.pravatar.cc/150?u=19",token456,true
+4,Sofie,Madsen,sofie.madsen@example.com,password123,"Musikglad læsehest.","https://i.pravatar.cc/150?u=34",token789,true
+5,William,Sørensen,william.sorensen@example.com,password123,"Cyklist og brætspilfan.","https://i.pravatar.cc/150?u=38",token321,true
+6,Freja,Nielsen,freja.nielsen@example.com,password123,"Hundeejer og weekendvandrer.","https://i.pravatar.cc/150?u=86",token654,false
+7,Lucas,Kristensen,lucas.kristensen@example.com,password123,"Ambitiøs hobbykok.","https://i.pravatar.cc/150?u=75",token987,true
+8,Ida,Pedersen,ida.pedersen@example.com,password123,"Nyder lange gåture.","https://i.pravatar.cc/150?u=47",token852,true
+9,Noah,Thomsen,noah.thomsen@example.com,password123,"Gamer og filmfan.","https://i.pravatar.cc/150?u=24",token741,true
+10,Liv,Holm,liv.holm@example.com,password123,"Kreativ sjæl med kunstinteresse.","https://i.pravatar.cc/150?u=186",token963,true

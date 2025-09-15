@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Produkter.scss';
 import HeaderComponent from '../../components/Header/HeaderComponent.jsx';
-import ArrowImg from '../../assets/images/Navbar Active.svg';
-import ColorHeart from '../../assets/images/FavoriteBlack.svg';
 import { useLocation, useNavigate } from 'react-router-dom';
 import BreadcrumbNav from '../../components/BreadcrumbNav/BreadcrumbNav.jsx';
 
@@ -71,7 +69,6 @@ export default function ProductPage() {
                 selectedCategory={selectedCategory}
                 setSelectedCategory={setSelectedCategory}
                 categories={defaultCategories}
-                arrowImg={ArrowImg}
                 selectedIdx={selectedIdx}
             />
             <div id='breadCrumbNav'>
@@ -112,7 +109,7 @@ export default function ProductPage() {
                                     </button>
                                     <div id="favoriteBtn">
                                         <span>0</span>
-                                        <img src={ColorHeart} alt="Favorite" id="heartIcon" style={{ opacity: 0.5 }} />
+
                                     </div>
                                 </div>
                             </div>

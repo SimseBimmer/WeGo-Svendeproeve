@@ -13,11 +13,13 @@ import MinSide from './pages/MinSidePage/MinSide.jsx';
 import CreateAccount from './pages/LoginPage/CreateAccount.jsx';
 import ProductViewPage from './pages/ProductViewPage/ProductViewPage.jsx';
 // component imports 
+import HeaderComponent from './components/Header/HeaderComponent.jsx';
 import FooterComponent from './components/Footer/FooterComponent.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
+      <HeaderComponent />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/produkter" element={<ProductPage />} />

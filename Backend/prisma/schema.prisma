@@ -1,0 +1,117 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           Int     @id @default(autoincrement()) // -> Primary Key med auto optælling
+  firstname    String  @default("Ikke navngivet")
+  lastname     String  @default("Ikke navngivet")
+  email        String  @unique // -> Unik værdi
+  password     String
+  description  String? @db.Text // -> Lang tekst
+  imageUrl     String
+  refreshToken String
+  isActive     Boolean @default(true) // -> Bool med default true
+
+  reviewsWritten  Review[]  @relation("reviewsWritten")
+  reviewsRecieved Review[]  @relation("reviewsRecieved")
+  trips           Trip[]
+  bookings        Booking[]
+
+  @@map("users") // -> Navn på tabel
+}
+
+model Trip {
+  id                 Int      @id @default(autoincrement())
+  userId             Int
+  departureDate      DateTime
+  addressDeparture   String   @db.Text
+  cityDeparture      String   @db.Text
+  addressDestination String   @db.Text
+  cityDestination    String   @db.Text
+  routeDeviation     Int
+  seatsTotal         Int
+  pricePerSeat       Decimal  @db.Decimal(10, 2)
+  bagSizeId          Int
+  comment            String   @db.Text
+  allowChildren      Boolean
+  allowSmoking       Boolean
+  allowMusic         Boolean
+  allowPets          Boolean
+  hasComfort         Boolean
+  useFerry           Boolean
+  isElectric         Boolean
+  createdAt          DateTime @default(now())
+
+  user     User      @relation(fields: [userId], references: [id])
+  bagsize  Bagsize   @relation(fields: [bagSizeId], references: [id])
+  bookings Booking[]
+
+  @@map("trips")
+}
+
+model Booking {
+  id        Int      @id @default(autoincrement())
+  tripId    Int
+  userId    Int
+  comment   String   @db.Text
+  numSeats  Int
+  createdAt DateTime @default(now())
+
+  trip Trip @relation(fields: [tripId], references: [id])
+  user User @relation(fields: [userId], references: [id])
+
+  @@map("bookings")
+}
+
+model Review {
+  id             Int    @id @default(autoincrement())
+  numStars       Int
+  comment        String @db.Text
+  reviewerId     Int
+  reviewedUserId Int
+  createdAt DateTime @default(now())
+
+  reviewer        User @relation("reviewsWritten", fields: [reviewerId], references: [id])
+  reviewsRecieved User @relation("reviewsRecieved", fields: [reviewedUserId], references: [id])
+
+  @@map("reviews")
+}
+
+model Bagsize {
+  id          Int    @id @default(autoincrement())
+  name        String
+  description String
+  iconUrl     String
+
+  trips Trip[]
+
+  @@map("bagsizes")
+}
+
+model Slide {
+  id       Int    @id @default(autoincrement())
+  imageUrl String
+  text     String
+
+  @@map("slides")
+}
+
+model Content {
+  id      Int @id @default(autoincrement())
+  title   String
+  content String @db.Text
+
+  @@map("content")
+}

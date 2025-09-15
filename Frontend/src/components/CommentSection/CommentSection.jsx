@@ -1,7 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
 import './CommentSection.scss';
-import CommentArrow from '../../assets/images/CommentArrow.svg';
-import UserImg from '../../assets/images/image 1.png';
 
 export default function CommentSection() {
     const [messages, setMessages] = useState([]);
@@ -94,7 +92,7 @@ export default function CommentSection() {
                         aria-label="Skriv kommentar"
                         type="button"
                     >
-                        <img src={CommentArrow} alt="Åbn kommentar" />
+                        <img alt="Åbn kommentar" />
                     </button>
                 )}
             </div>
@@ -129,7 +127,7 @@ export default function CommentSection() {
                 ) : (
                     messages.map(msg => (
                         <li key={msg.id} className="commentItem">
-                            <img src={UserImg} alt="Bruger" className="commentUserImg" />
+                            <img alt="Bruger" className="commentUserImg" />
                             <div>
                                 <div className="commentUserName">{msg.name}</div>
                                 <div className="commentText">{msg.message}</div>
