@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './HeaderComponent.scss';
 import NavComponent from '../NavComponent/NavComponent';
-import Slideshow from '../Slideshow/Slideshow';
 import { NavLink, useNavigate } from 'react-router-dom';
 import logo from '../../assets/images/WeGo.svg'; 
 

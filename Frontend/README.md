@@ -13,5 +13,5 @@ npm run dev
 npm i
 npm run dev
 cp .env.example .env
-npx prisma migrate dev
-npx prisma db seed
+npm run migrate
+npm run seed

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './MinSide.scss';
 import HeaderComponent from '../../components/Header/HeaderComponent.jsx';
-import BreadcrumbNav from '../../components/BreadcrumbNav/BreadcrumbNav.jsx';
 
 export default function MinSide() {
     // loader brugerens kommentarer
@@ -59,9 +58,7 @@ export default function MinSide() {
     return (
         <div id="minSidePage">
             <HeaderComponent />
-            <div id='breadCrumbNav'>
-                <BreadcrumbNav path={['Home', 'Min side']} />
-            </div>
+
             <div className="minSideContent">
                 <h2>Min side</h2>
                 <h3>Mine kommentarer</h3>
