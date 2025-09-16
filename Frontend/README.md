@@ -15,3 +15,8 @@ npm run dev
 cp .env.example .env
 npm run migrate
 npm run seed
+
+## Login
+Email: info@webudvikler.dk
+Adgangskode: password
+

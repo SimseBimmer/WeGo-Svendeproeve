@@ -1,13 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 // global scss
 import './App.scss'
 // page imports
-import ForsidePage from './pages/ForsidePage/ForsidePage.jsx';
-import MinSide from './pages/MinSidePage/MinSide.jsx';
+import ForsidePage from './pages/forsidePage/forsidePage.jsx';
+import FindLiftPage from './pages/FindLiftPage/FindLiftPage.jsx';
 // component imports 
 import HeaderComponent from './components/Header/HeaderComponent.jsx';
+
+// Beskyttet route til min side
+function ProtectedRoute({ children }) {
+  const isLoggedIn = !!localStorage.getItem('accessToken');
+  return isLoggedIn ? children : <Navigate to="/" />;
+}
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -15,7 +21,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <HeaderComponent />
       <Routes>
         <Route path="/" element={<ForsidePage />} />
-        <Route path="/minside" element={<MinSide />} />
+        <Route path="/FindLift" element={<FindLiftPage />} />
+        {/* MinSidePage fjernet, nu bruges modal */}
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

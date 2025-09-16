@@ -76,7 +76,7 @@ const authenticateUser = async (username: string, password: string) => {
         user: { 
             id: user.id, 
             firstname: user.firstname, 
-            lastname: user.firstname 
+            lastname: user.lastname // rettet til at bruge user.lastname :)
         },
     };
 };

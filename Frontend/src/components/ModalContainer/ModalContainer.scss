@@ -1,0 +1,38 @@
+@import '../../styles/variables.scss';
+
+#modalBackdrop {
+    position: fixed;
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0;
+    background: #00000060;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    #modalBox {
+        background: $color-white;
+        border-radius: 18px;
+        box-shadow: 0 4px 32px rgba(0,0,0,0.18);
+        padding: 2.5rem 2.5rem 2rem 2.5rem;
+        width: 375px;
+        min-height: 350px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        #closeModalBtn {
+            position: absolute;
+            top: 1.2rem;
+            right: 1.2rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 2rem;
+            color: $color-black;
+        }
+    }
+}

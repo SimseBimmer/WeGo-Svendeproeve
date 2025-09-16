@@ -1,2 +1,60 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans+Hebrew+Condensed:wght@400;700&display=swap');
 @import '../../styles/variables.scss';
+
+main {
+    position: relative;
+    height: 100%;
+
+    // Slideshow container
+    #slideshowContainer {
+        position: relative;
+        width: 100%;
+        height: 100%;
+
+        margin: 0 auto;
+        overflow: hidden;
+    }
+
+    #slideshowImage {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: cover;
+        object-position: center 100%;
+    }
+
+    #slideshowText {
+        transition: 0.5s;
+        font-size: 3rem;
+        text-align: center;
+        opacity: 0;
+        position: absolute;
+        left: 50%;
+        top: 60%;
+        transform: translate(-50%, -50%);
+        width: fit-content;
+
+        &.show {
+            opacity: 1;
+        }
+
+        &.hide {
+            opacity: 0;
+        }
+    }
+
+
+}
+
+body {
+    position: relative;
+
+}
+
+#footerContainer {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    height: 210px;
+    overflow: hidden;
+}

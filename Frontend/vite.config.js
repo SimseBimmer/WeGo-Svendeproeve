@@ -7,4 +7,10 @@ export default defineConfig({
   build: {
     outDir: 'dist',
   },
+  server: {
+    proxy: {
+      '/api': 'http://localhost:4000',
+      '/images': 'http://localhost:4000',
+    },
+  },
 });

@@ -1,88 +1,64 @@
 import React, { useEffect, useState } from 'react';
 import './forsidePage.scss';
 import '../../App.scss';
-
-import { useNavigate } from 'react-router-dom';
 import FooterComponent from '../../components/FooterComponent/footerComponent.jsx';
 
-// http://localhost:{{portnumber}}/api/slides
-
+// Simpelt slideshow, kun tekst har fade
 const ForsidePage = () => {
+  // slides: gemmer slides fra backend
+  const [slides, setSlides] = useState([]);
+  // current: hvilket slide vises nu
+  const [current, setCurrent] = useState(0);
+  // visText: styrer om tekst skal vises
+  const [visText, setVisText] = useState(false);
+  // fejl: hvis der er fejl fra server
+  const [fejl, setFejl] = useState(null);
+
+  // Hent slides når siden loader
+  useEffect(() => {
+    fetch('/api/slides')
+      .then(res => res.ok ? res.json() : Promise.reject('Serverfejl'))
+      .then(data => {
+        setSlides(data);
+        setCurrent(Math.floor(Math.random() * data.length)); // start på random slide
+      })
+      .catch(() => setFejl('Kunne ikke hente slideshow fra serveren.'));
+  }, []);
+
+  // Skift slide og styr tekst-timing
+  useEffect(() => {
+    if (slides.length === 0) return;
+    setVisText(false);
+    const show = setTimeout(() => setVisText(true), 500); // vis tekst efter 0.5sekunder
+    const hide = setTimeout(() => setVisText(false), 5000); // skjul tekst 1 sekund før slide
+    const next = setTimeout(() => setCurrent((c) => (c + 1) % slides.length), 6000); // næste slide efter 6
+    return () => {
+      clearTimeout(show);
+      clearTimeout(hide);
+      clearTimeout(next);
+    };
+  }, [current, slides]);
+
+  if (fejl) return <div id="slideshowError">{fejl}</div>;
+  if (slides.length === 0) return <div id="slideshowLoading">Indlæser slideshow...</div>;
+
+  // current slide
+  const slide = slides[current];
+
   return (
     <>
       <main>
-        <img src="http://localhost:3000/api/slides" alt="slideshow" />
+        <div id="slideshowContainer">
+          <img id="slideshowImage" src={slide.imageUrl} alt="slideshow" draggable={false} />
+          <h1 id="slideshowText" className={visText ? 'show' : 'hide'}>
+            {slide.text}
+          </h1>
+        </div>
       </main>
-      <FooterComponent />
+      <div id='footerContainer'>< FooterComponent /></div>
+      foooter er ik i main
     </>
   );
 };
 
 export default ForsidePage;
-
-
-
-
-
-
-
-
-
-
-// //#region Gammel KODE
-// // Hovedside med nyheder
-// export default function ForsidePage() {
-//   // news: gemmer nyheder fra backend
-//   // loading: viser om vi loader data
-//   const [news, setNews] = useState([]);
-//   const [loading, setLoading] = useState(true);
-//   const navigate = useNavigate();
-
-//   // Henter nyheder fra backend når siden loader
-//   useEffect(() => {
-//     fetch('http://localhost:3000/api/news')
-//       .then(res => res.json())
-//       .then(data => {
-//         // Shuffle array så vi får tilfældige nyheder
-//         let shuffled = data.sort(() => Math.random() - 0.5);
-//         // Tag kun de første 3 nyheder
-//         let threeNews = shuffled.slice(0, 3);
-//         setNews(threeNews);
-//         setLoading(false);
-//       })
-//       .catch(() => setLoading(false)); // error handling
-//   }, []);
-
-//   return (
-//     <div id='LandingPage'>
-//       <div id='ContentContainer'>
-//         <div id='MainContentContainer'>
-//           <h2>Nyheder</h2>
-
-//           <div id='MainContent'>
-//             {/* Viser loading tekst hvis vi loader */}
-//             {loading ? (
-//               <div>Indlæser nyheder...</div>
-//             ) : (
-//               <ul id='NewsList'>
-//                 {/* Mapper over nyheder og viser dem */}
-//                 {news.map(article => (
-//                   <li id='NewsArticle' key={article.id} style={{ cursor: 'pointer' }} onClick={() => navigate(`/nyheder`, { state: { slug: article.slug } })} >
-//                     {/* Sørger for at billed-link virker både hvis det er absolut eller relativt */}
-//                     <img src={article.imageUrl.startsWith('http') ? article.imageUrl : 'http://localhost:3000' + article.imageUrl} alt={article.title} />
-//                     <div>
-//                       <p>18 august 2024:</p>
-//                       <h3>{article.title}</h3>
-//                       <p>{article.teaser}</p>
-//                     </div>
-//                   </li>
-//                 ))}
-//               </ul>
-//             )}
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-// //#endregion

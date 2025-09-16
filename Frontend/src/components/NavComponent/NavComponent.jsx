@@ -1,74 +1,97 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './NavComponent.scss';
+import LoginModal from '../Auth/LoginModal';
+import ModalContainer from '../ModalContainer/ModalContainer';
+import MinSideModal from '../MinSideModal/MinSideModal';
+import HowItWorksModal from '../HowItWorksModal/HowItWorksModal';
 
 export default function NavComponent() {
-    //#region GAMMEL KODE TIL NAVIGATION
-    // const [open, setOpen] = useState(false);
-    // const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem('accessToken'));
-    // const navigate = useNavigate();
+    // State til at styre om login modal vises
+    const [showLoginModal, setShowLoginModal] = useState(false);
+    const [showHowModal, setShowHowModal] = useState(false); // "Sådan virker det" modal
+    const [showMinSideModal, setShowMinSideModal] = useState(false); // Min side modal
+    const [user, setUser] = useState(null);
 
-    // // Listen for login status changes
-    // useEffect(() => {
-    //     function updateStatus() {
-    //         setLoggedIn(!!localStorage.getItem('accessToken'));
-    //     }
-    //     window.addEventListener('loginStatusChanged', updateStatus);
-    //     return () => window.removeEventListener('loginStatusChanged', updateStatus);
-    // }, []);
+    // Hent bruger fra localStorage hvis logget ind
+    useEffect(() => {
+        const userData = localStorage.getItem('user');
+        if (userData) {
+            setUser(JSON.parse(userData));
+        }
+    }, []);
 
-    // function handleLogout() {
-    //     if (window.confirm('Er du sikker på, at du vil logge ud?')) {
-    //         localStorage.removeItem('accessToken');
-    //         setLoggedIn(false);
-    //         window.dispatchEvent(new Event('loginStatusChanged'));
-    //         setOpen(false);
-    //         navigate('/');
-    //     }
-    // }
-    //#endregion
+    // Log ud funktion
+    function handleLogout() {
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('user');
+        setUser(null);
+        window.location.reload(); // reload for at opdatere nav
+    }
 
     return (
-        <nav id='globalNav'>
-            <ul>
-                <li><NavLink to="/" onClick={() => setOpen(false)}>Find et lift</NavLink></li>
-                <li><NavLink to="/produkter" onClick={() => setOpen(false)}>Sådan virker det</NavLink></li>
-            </ul>
-            <ul>
-                <li id='loginBtn'><NavLink to="/login" onClick={() => setOpen(false)}>Log ind</NavLink></li> {/* vis kun hvis user ik er logget ind */}
-                <li ><NavLink to="/opret" onClick={() => setOpen(false)}>UserName</NavLink></li> {/* vis kun hvis user er logget ind */}
-                <li id='logoutBtn'><NavLink to="/opret" onClick={() => setOpen(false)}>Log ud</NavLink></li> {/* vis kun hvis user er logget ind */}
-
-            </ul>
-        </nav>
-
+        <>
+            <nav id='globalNav'>
+                <ul>
+                    <li>
+                        <NavLink to="/FindLift">Find et lift</NavLink>
+                    </li>
+                    <li id='howItWorksBtn'>
+                        {/* Åbner "Sådan virker det" modal */}
+                        <button
+                            onClick={() => setShowHowModal(true)}
+                            style={{ background: 'none', border: 'none', cursor: 'pointer', font: 'inherit', color: 'inherit' }}
+                        >
+                            Sådan virker det
+                        </button>
+                    </li>
+                    {user && (
+                        <li id='minSideBtn'>
+                            {/* Åbner Min side modal */}
+                            <button
+                                onClick={() => setShowMinSideModal(true)}
+                                style={{ background: 'none', border: 'none', cursor: 'pointer', font: 'inherit', color: 'inherit' }}
+                            >
+                                Min side
+                            </button>
+                        </li>
+                    )}
+                </ul>
+                <ul>
+                    {!user && (
+                        <li id='loginBtn'>
+                            <button onClick={() => setShowLoginModal(true)} style={{ background: 'none', border: 'none', cursor: 'pointer', font: 'inherit', color: 'inherit' }}>
+                                Log ind
+                            </button>
+                        </li>
+                    )}
+                    {user && (
+                        <>
+                            <li id='userName'>
+                                {/* Viser brugerens navn */}
+                                {user.firstname} {user.lastname}
+                            </li>
+                            <li id='logoutBtn'>
+                                <button onClick={handleLogout} style={{ background: 'none', border: 'none', cursor: 'pointer', font: 'inherit', color: 'inherit' }}>
+                                    Log ud
+                                </button>
+                            </li>
+                        </>
+                    )}
+                </ul>
+            </nav>
+            {/* Login modal vises hvis showLoginModal er true */}
+            {showLoginModal && (
+                <LoginModal onClose={() => setShowLoginModal(false)} onLoginSuccess={userObj => setUser(userObj)} />
+            )}
+            {/* "Sådan virker det" modal */}
+            {showHowModal && (
+                <HowItWorksModal onClose={() => setShowHowModal(false)} />
+            )}
+            {/* Min side modal */}
+            {showMinSideModal && (
+                <MinSideModal onClose={() => setShowMinSideModal(false)} />
+            )}
+        </>
     );
 }
-
-// //#region GAMMEL KODE TIL NAVIGATION
-// <div>
-
-//     <nav>
-//         {/* Luk-knap */}
-//         <button className="nav-close-btn" onClick={() => setOpen(false)}></button>
-//         {/* Navigation links */}
-//         <ul>
-//             <li><NavLink to="/" onClick={() => setOpen(false)}>Find et lift</NavLink></li>
-//             <li><NavLink to="/produkter" onClick={() => setOpen(false)}>Sådan virker det</NavLink></li>
-//             {loggedIn ? (
-//                 <>
-//                     <li><NavLink to="/minside" onClick={() => setOpen(false)}>Min side</NavLink></li>
-//                     <li><button onClick={handleLogout} style={{ background: 'none', border: 'none', color: '#fff', fontSize: '1.5rem', cursor: 'pointer' }}>Log ud</button></li>
-//                 </>
-//             ) : (
-//                 <>
-//                     <li><NavLink to="/login" onClick={() => setOpen(false)}>Login</NavLink></li>
-//                     <li><NavLink to="/opret" onClick={() => setOpen(false)}>Opret konto</NavLink></li>
-//                 </>
-//             )}
-//         </ul>
-//     </nav>
-//     {/* Baggrund der lukker menuen hvis man klikker udenfor */}
-//     {open && <div className="nav-backdrop" onClick={() => setOpen(false)} />}
-// </div>
-// #endregion

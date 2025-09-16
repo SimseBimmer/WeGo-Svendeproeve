@@ -1,0 +1,18 @@
+@import '../../styles/variables.scss';
+
+
+h2 {
+    font-size: 1.7rem;
+    font-weight: 700;
+    text-align: left;
+    width: 100%;
+}
+
+
+p {
+    color: $color-black;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    text-align: left;
+    margin-bottom: 1rem;
+}
