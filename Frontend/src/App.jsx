@@ -6,6 +6,7 @@ import './App.scss'
 // page imports
 import ForsidePage from './pages/forsidePage/forsidePage.jsx';
 import FindLiftPage from './pages/FindLiftPage/FindLiftPage.jsx';
+import LiftDetailsPage from './pages/LiftDetailsPage/LiftDetailsPage.jsx';
 // component imports 
 import HeaderComponent from './components/Header/HeaderComponent.jsx';
 
@@ -22,6 +23,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Routes>
         <Route path="/" element={<ForsidePage />} />
         <Route path="/FindLift" element={<FindLiftPage />} />
+        <Route path="/LiftDetails/:id" element={<LiftDetailsPage />} />
         {/* MinSidePage fjernet, nu bruges modal */}
       </Routes>
     </BrowserRouter>

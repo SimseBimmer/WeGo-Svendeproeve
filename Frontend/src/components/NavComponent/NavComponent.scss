@@ -10,6 +10,7 @@
         gap: 2.5rem;
         list-style: none;
         padding: 0;
+        align-items: center;
 
         li {
             padding: 1rem 0;
@@ -18,10 +19,6 @@
             font-size: 1.2rem;
             font-weight: 300;
             color: $color-black;
-            padding: 1rem 0;
-
-
-
 
 
             a {
@@ -30,10 +27,7 @@
                 font-size: 1.2rem;
                 font-weight: 300;
                 color: $color-black;
-                padding: 1rem 0;
                 cursor: pointer;
-
-
 
                 &:hover {
                     opacity: .7;
@@ -48,8 +42,53 @@
 
         }
 
-        #loginBtn {}
 
-        #logoutBtn {}
+    }
+}
+
+
+
+li *,
+#userName {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font: inherit;
+    color: inherit;
+    // padding: .5rem 1rem;
+    margin: 0 0;
+
+}
+
+
+
+#loginBtn {
+    button {
+        border-radius: 12px;
+        border: 2px solid $color-dark-blue;
+        background-color: $color-dark-blue;
+        padding: .5rem 1rem;
+        transition: 200ms ease-in-out;
+        color: $color-white;
+        &:hover {
+            background-color: $color-white;
+            color: $color-dark-blue
+        }
+    }
+
+}
+
+#logoutBtn {
+    button {
+        border-radius: 12px;
+        border: 2px solid $color-dark-blue;
+        background-color: $color-dark-blue;;
+        padding: .5rem 1rem;
+        transition: 200ms ease-in-out;
+        color: $color-white;
+        &:hover {
+            background-color: $color-white;
+            color: $color-dark-blue;
+        }
     }
 }

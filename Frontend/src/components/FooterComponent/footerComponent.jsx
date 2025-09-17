@@ -12,8 +12,7 @@ const FooterComponent = () => {
                     <p>Fartstræde 12c, 2. sal, 9000 Aalborg </p>
                 </div>
             </div>
-            <div id='emptyFooterSpace'>
-            </div>
+            <div id='emptyFooterSpace'></div>
         </footer>
     );
 };

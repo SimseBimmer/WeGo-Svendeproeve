@@ -1,0 +1,135 @@
+@import '../../styles/variables.scss';
+
+#filterComponent {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color: $color-white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 1rem 0;
+
+    #filterContentContainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 1rem;
+        width: 60%;
+        margin: 0 auto;
+
+
+        .row {
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+            width: 100%;
+        }
+
+        .inputGroup {
+            width: 100%;
+            // width: fit-content;
+            align-items: center;
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+            padding: 0.5rem 1rem;
+            border: 1px solid $color-light-grey;
+            border-radius: 12px;
+
+            img {
+                height: 25px;
+                width: 25px;
+            }
+
+            input {
+                height: 100%;
+                width: 400px;
+                border: none;
+                font-size: 1.2rem;
+                padding: .25rem 0;
+
+                &:focus {
+                    outline: none;
+                }
+            }
+
+        }
+
+        #swapIcon {
+            background-color: #E0FAFF;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            border-radius: 12px;
+            padding: 1rem 1rem;
+            cursor: pointer;
+            transition: 200ms ease-in-out;
+
+            &:hover {
+                opacity: .8;
+                transform: scale(1.15);
+            }
+
+            img {
+                height: 15px;
+                width: 15px;
+            }
+        }
+
+        #submitGroup {
+            button {
+                background-color: $color-cloud-blue;
+                color: $color-white;
+                border: none;
+                border-radius: 21px;
+                padding: 0rem 1.25rem;
+                font-size: 1rem;
+                font-weight: 400;
+                height: 100%;
+                cursor: pointer;
+                transition: 200ms ease-in-out;
+
+                &:hover {
+                    opacity: .8;
+                    transform: scale(1.15);
+                }
+            }
+        }
+
+        // Responsive styles
+        @media (max-width: 1200px) {
+            flex-direction: column;
+            width: 80%;
+            gap: 0.75rem;
+
+            .row {
+                flex-direction: row;
+                width: 100%;
+                gap: 0.75rem;
+            }
+
+            .inputGroup {
+                flex: 1;
+                width: auto;
+
+                input {
+                    width: 100%;
+                    font-size: 1rem;
+                }
+            }
+
+            #swapIcon,
+            #submitGroup {
+                flex-shrink: 0;
+            }
+
+            #swapIcon {
+                padding: 0.75rem 0.75rem;
+            }
+
+            #submitGroup button {
+                padding: 0rem 1rem;
+                font-size: 1rem;
+            }
+        }
+    }
+}

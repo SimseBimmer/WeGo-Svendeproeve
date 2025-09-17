@@ -1,9 +1,7 @@
 @import '../../styles/variables.scss';
 
 #globalHeader {
-    position: fixed;
-    top: 0;
-    left: 0;
+
     z-index: 999;
     background-color: $color-white;    
     border-bottom: 1px solid $color-light-grey;

@@ -33,14 +33,13 @@ export default function NavComponent() {
         <>
             <nav id='globalNav'>
                 <ul>
-                    <li>
+                    <li className={window.location.pathname === "/FindLift" ? "active" : ""}>
                         <NavLink to="/FindLift">Find et lift</NavLink>
                     </li>
                     <li id='howItWorksBtn'>
-                        {/* Åbner "Sådan virker det" modal */}
-                        <button
+                        {/* Åbner "Sådan virker det modalen */}
+                        <button 
                             onClick={() => setShowHowModal(true)}
-                            style={{ background: 'none', border: 'none', cursor: 'pointer', font: 'inherit', color: 'inherit' }}
                         >
                             Sådan virker det
                         </button>
@@ -50,7 +49,6 @@ export default function NavComponent() {
                             {/* Åbner Min side modal */}
                             <button
                                 onClick={() => setShowMinSideModal(true)}
-                                style={{ background: 'none', border: 'none', cursor: 'pointer', font: 'inherit', color: 'inherit' }}
                             >
                                 Min side
                             </button>
@@ -60,7 +58,7 @@ export default function NavComponent() {
                 <ul>
                     {!user && (
                         <li id='loginBtn'>
-                            <button onClick={() => setShowLoginModal(true)} style={{ background: 'none', border: 'none', cursor: 'pointer', font: 'inherit', color: 'inherit' }}>
+                            <button onClick={() => setShowLoginModal(true)} >
                                 Log ind
                             </button>
                         </li>
@@ -72,7 +70,7 @@ export default function NavComponent() {
                                 {user.firstname} {user.lastname}
                             </li>
                             <li id='logoutBtn'>
-                                <button onClick={handleLogout} style={{ background: 'none', border: 'none', cursor: 'pointer', font: 'inherit', color: 'inherit' }}>
+                                <button onClick={handleLogout}>
                                     Log ud
                                 </button>
                             </li>

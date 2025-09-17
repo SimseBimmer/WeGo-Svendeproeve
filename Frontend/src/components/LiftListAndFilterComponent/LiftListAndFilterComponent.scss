@@ -1,0 +1,363 @@
+@import '../../styles/variables.scss';
+
+#contentWrapper {
+    width: 60%;
+    margin: 2rem auto 0 auto;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+
+    #filterAside {
+        width: 20%;
+        background-color: $color-white;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        padding: .5rem;
+
+        h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        p {
+            font-size: 1rem;
+            font-weight: 300;
+            margin: 0;
+        }
+
+        input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: $color-cloud-blue;
+        }
+
+        #slider {
+            width: 90%;
+            margin: 0 auto;
+            padding: .5rem 0 2rem 0;
+            border-bottom: 1px solid $color-light-grey;
+
+            #sliderLabel {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+
+                h3,
+                p {
+                    font-size: 1.3rem;
+                    font-weight: 600;
+                    margin: 0;
+                }
+            }
+
+            input {
+                width: 100%;
+                margin: 0;
+            }
+
+            input[type="range"] {
+                border-radius: 4px;
+                appearance: none;
+                background: $color-light-grey;
+            }
+
+            input[type="range"]::-webkit-slider-runnable-track {
+                height: 8px;
+            }
+
+            input[type="range"]::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                background: $color-white;
+                border: 1px solid $color-cloud-blue;
+                cursor: pointer;
+                margin-top: -6px;
+            }
+        }
+
+        #baggage {
+            width: 90%;
+            margin: 1rem auto 0 auto;
+
+            #baggageTyper {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                padding: 0 0 1rem 0;
+                border-bottom: 1px solid $color-light-grey;
+                width: 90%;
+                margin: 1rem auto .5rem auto;
+
+                .baggageIconWrapper {
+                    width: 30%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 12px;
+                    padding: .3rem;
+                    gap: .3rem;
+                    cursor: pointer;
+
+                    img {
+                        padding: .5rem;
+                        max-width: 40px;
+                        height: 40px;
+                    }
+
+                    p {
+                        text-align: center;
+                    }
+
+                    &:hover {
+                        background-color: $color-light-grey;
+                    }
+
+                    &:selected {
+                        background-color: $color-cloud-blue;
+                        color: $color-white;
+                    }
+                }
+            }
+        }
+
+        #komfort {
+            width: 90%;
+            margin: 1rem auto 0 auto;
+
+            div {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 1rem;
+                padding: 0 0 1rem 0;
+                border-bottom: 1px solid $color-light-grey;
+                width: 90%;
+                margin: .5rem auto;
+
+                input[type="checkbox"] {
+                    width: 30px;
+                    height: 30px;
+                    cursor: pointer;
+                    accent-color: $color-cloud-blue;
+                }
+            }
+        }
+
+        #preferencer {
+            width: 90%;
+            margin: 1rem auto 1rem auto;
+            padding-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            border-bottom: 1px solid $color-light-grey;
+
+            #preferencerCheckboxes {
+                width: 90%;
+                margin: .5rem auto 0 auto;
+                display: flex;
+                flex-direction: column;
+                gap: .5rem;
+
+                .CheckboxContainer {
+                    display: flex;
+                    flex-direction: row;
+                    gap: 1rem;
+                    align-content: center;
+
+                    p {
+                        margin: 0;
+                    }
+                }
+            }
+        }
+
+        #reset {
+            width: 90%;
+            margin: 0 auto 1rem auto;
+
+            button {
+                background-color: $color-cloud-blue;
+                color: $color-white;
+                width: 100%;
+                border: none;
+                border-radius: 21px;
+                padding: 1rem 1.25rem;
+                font-size: 1.4rem;
+                font-weight: 400;
+                cursor: pointer;
+                transition: 200ms ease-in-out;
+
+                &:hover {
+                    opacity: .7;
+                }
+            }
+        }
+    }
+
+    #liftList {
+        width: 100%;
+
+        h2 {
+            font-size: 1.7rem;
+            margin: 0 0 1rem 0;
+        }
+
+        #liftsContainer {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-height: 800px;
+
+            #liftCard {
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+                background-color: $color-white;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                border-radius: 18px;
+
+                #DriverInfo {
+                    width: 20%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    padding: 1.5rem;
+
+                    img {
+                        width: 70px;
+                        height: 70px;
+                        border-radius: 50%;
+                        object-fit: cover;
+                        margin: .5rem 0 0 0;
+                    }
+
+                    p {
+                        font-size: 1.2rem;
+                        font-weight: 400;
+                        margin: 0;
+                    }
+
+                    #starReview {
+                        display: flex;
+                        flex-direction: row;
+                        gap: .2rem;
+
+                        img {
+                            width: 20px;
+                            height: 20px;
+                        }
+                    }
+                }
+
+                #tripDetails {
+                    border-left: 1px solid $color-light-grey;
+                    border-right: 1px solid $color-light-grey;
+                    padding: 1.5rem;
+                    width: 70%;
+
+                    #timeAndOffers {
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-between;
+                        align-items: center;
+                        width: 100%;
+                        margin-bottom: .5rem;
+
+                        p {
+                            font-size: 1.4rem;
+                            font-weight: 700;
+                            margin: 0;
+                        }
+
+                        #tripIcons {
+                            display: flex;
+                            flex-direction: row;
+                            gap: .5rem;
+
+                            img {
+                                width: 25px;
+                                height: 25px;
+                            }
+                        }
+                    }
+
+                    #fromToContainer {
+                        display: flex;
+                        flex-direction: column;
+                        gap: .5rem;
+
+                        .addressContainer {
+                            display: flex;
+                            flex-direction: row;
+                            gap: .5rem;
+                            margin-bottom: .5rem;
+
+                            img {
+                                width: 30px;
+                                height: 30px;
+                            }
+
+                            p {
+                                font-size: 1rem;
+                                font-weight: 300;
+                                margin: 0;
+                                padding: 0;
+                                line-height: normal;
+                            }
+                        }
+                    }
+                }
+
+                #priceAndSeats {
+                    width: 20%;
+                    display: flex;
+                    flex-direction: column;
+
+                    #priceContainer {
+                        width: 100%;
+                        height: 50%;
+                        margin: auto 0;
+                        border-bottom: 1px solid $color-light-grey;
+                        justify-content: center;
+                        display: flex;
+                        align-items: center;
+
+                        p {
+                            font-size: 1rem;
+                            font-weight: 700;
+                            text-align: center;
+                            width: fit-content;
+                            margin: auto;
+                        }
+                    }
+
+                    #seatsContainer {
+                        width: fit-content;
+                        height: 50%;
+                        margin: auto;
+                        justify-content: center;
+                        display: flex;
+                        align-items: center;
+
+                        #seatsIcons {
+                            display: flex;
+                            flex-direction: row;
+                            gap: .5rem;
+
+                            img {
+                                width: 15px;
+                                height: 15px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
