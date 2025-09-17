@@ -1,0 +1,367 @@
+@import '../../styles/variables.scss';
+
+main {
+    min-height: 100vh;
+    background-color: #F3F4F4;
+
+    #contentWrapper {
+        width: 60%;
+        margin: 2rem auto 0 auto;
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+
+        #tripSection {
+            width: 65%;
+            min-height: 70vh;
+            background-color: $color-white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 18px;
+            padding: 1rem;
+
+            #tripHeader {
+                margin-bottom: 1rem;
+
+                h2 {
+                    font-size: 1.7rem;
+                    font-weight: 600;
+                    margin: 0;
+                }
+
+                p {
+                    font-size: 1rem;
+                    font-weight: 300;
+                    margin: 0;
+                }
+            }
+
+            #information {
+                margin-bottom: 1rem;
+
+                h3 {
+                    font-weight: 400;
+                    font-size: 1.5rem;
+                }
+
+                #driverInfo {
+                    div {
+                        display: flex;
+                        flex-direction: row;
+                        gap: 1rem;
+                        align-items: center;
+
+                        img {
+                            width: 25px;
+                            height: 25px;
+                        }
+
+                        p {
+                            margin: 0;
+                        }
+                    }
+                }
+            }
+
+            #details {
+                margin-bottom: 1rem;
+
+                h3 {
+                    font-weight: 400;
+                }
+
+                ul {
+                    list-style-type: none;
+                    padding: 0;
+                    margin: .5rem 0 0 0;
+                    display: flex;
+                    gap: 1rem;
+                    flex-wrap: wrap;
+                    width: 100%;
+
+                    li {
+                        width: fit-content;
+
+                        .detailContainer {
+                            display: flex;
+                            flex-direction: row;
+                            gap: 1rem;
+                            align-items: center;
+
+                            img {
+                                width: 25px;
+                                height: 25px;
+                            }
+
+                            div {
+                                display: flex;
+                                flex-direction: column;
+                                height: fit-content;
+
+                                p {
+                                    color: $color-black;
+                                    margin: 0;
+                                    line-height: normal;
+                                }
+
+                                .detailTitle {
+                                    color: #999999;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            #preferences {
+                margin-bottom: 1rem;
+
+                h3 {
+                    font-weight: 400;
+                }
+
+                #preferencesLists {
+                    display: flex;
+                    flex-direction: row;
+                    gap: 2rem;
+                    margin: .5rem 0 0 0;
+
+                    ul {
+                        list-style-type: none;
+                        padding: 0;
+
+                        li {
+                            div {
+                                display: flex;
+                                flex-direction: row;
+                                gap: 1rem;
+                                align-items: center;
+
+                                img {
+                                    width: 25px;
+                                    height: 25px;
+                                }
+
+                                p {
+                                    margin: 0;
+                                }
+                            }
+                        }
+                    }
+
+                }
+            }
+
+            #driverComment {
+                margin: 2rem 0 5rem 0;
+
+                h3 {
+                    font-weight: 400;
+                    font-size: 1.5rem;
+                }
+
+                div {
+                    width: 95%;
+                    margin: 1rem auto 0 auto;
+                    display: flex;
+                    flex-direction: row;
+
+                    gap: 1rem;
+
+                    // align-items: center;
+                    img {
+                        width: 50px;
+                        height: 50px;
+                    }
+
+                    p {
+                        font-size: 1.4rem;
+                        font-weight: 300;
+                        margin: 0;
+                    }
+                }
+            }
+
+            #driver {
+
+                h3 {
+                    font-weight: 400;
+                    font-size: 1.5rem;
+                    margin-bottom: 1rem;
+                }
+
+                #driverInfoContainer {
+                    display: flex;
+                    flex-direction: row;
+                    gap: 1rem;
+                    align-items: center;
+
+                    #driverImage {
+                        width: 200px;
+                        height: 200px;
+                        border-radius: 50%;
+                        background-color: #999999;
+                    }
+
+                    #driverDetails {
+                        display: flex;
+                        flex-direction: column;
+                        gap: .5rem;
+
+                        h3 {
+                            margin: 0;
+                            font-weight: 600;
+                            font-size: 1.5rem;
+
+                        }
+
+                        #starReviews {
+                            display: flex;
+                            flex-direction: row;
+                            gap: .25rem;
+
+                            img {
+                                width: 25px;
+                                height: 25px;
+                            }
+
+                            p {
+                                margin: 0;
+                                font-size: 1rem;
+                            }
+                        }
+
+                        #memberSince {
+                            color: #999999;
+                            margin: 0;
+                            font-size: .9rem;
+                        }
+
+                        button {
+                            background-color: $color-cloud-blue;
+                            padding: 1rem 1.5rem;
+                            margin: .5rem 0;
+                            border: none;
+                            border-radius: 999999px;
+                            color: $color-white;
+                            font-size: 1.2rem;
+                            cursor: pointer;
+                            width: fit-content;
+                            transition: 200ms ease-in-out;
+
+                            &:hover {
+                                opacity: .8;
+                            }
+
+                        }
+                    }
+
+
+                }
+            }
+        }
+
+        #seatsSection {
+            width: 30%;
+            max-height: fit-content;
+            margin: 3rem 0 0 0;
+
+            h2 {
+                font-size: 1.3rem;
+                font-weight: 600;
+                margin: 0 0 1rem 0;
+            }
+
+            #steatContainer {
+                background-color: $color-white;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                border-radius: 18px;
+                padding: 1rem;
+
+                #seatsList {
+                    list-style-type: none;
+                    padding: 0;
+
+                    li {
+                        border-bottom: 1px solid $color-light-grey;
+                        padding: 1rem 0;
+
+                        .seatContainer {
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            gap: .5rem;
+
+                            #userProfilePicture {
+                                width: 65px;
+                                height: 65px;
+                                border-radius: 50%;
+                                background-color: $color-light-grey;
+                            }
+
+                            #userInfo {
+                                p {
+                                    margin: 0;
+                                    line-height: normal;
+                                    font-weight: 400;
+                                }
+
+                                #userName {
+                                    font-weight: 600;
+                                }
+
+                                #dig {
+                                    color: #999999;
+                                    margin-left: .5rem;
+                                }
+                            }
+                        }
+                    }
+
+                }
+
+                #seatPriceContainer {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin: 1rem 0;
+
+                    p {
+                        margin: 0;
+                        font-size: 1.2rem;
+                        font-size: 300;
+                        color: $color-black;
+                    }
+
+                    #valuta {
+                        color: #999999;
+                        font-weight: 600;
+
+                        span {
+                            color: $color-black;
+                            font-size: 1.6rem;
+                            font-weight: 700;
+                            margin-left: 1.5rem;
+                        }
+                    }
+                }
+
+                button {
+                    background-color: $color-cloud-blue;
+                    padding: 1rem 1.5rem;
+                    border: none;
+                    border-radius: 999999px;
+                    color: $color-white;
+                    font-size: 1.2rem;
+                    cursor: pointer;
+                    width: 100%;
+                    transition: 200ms ease-in-out;
+
+                    &:hover {
+                        opacity: .8;
+                    }
+                }
+            }
+        }
+    }
+}

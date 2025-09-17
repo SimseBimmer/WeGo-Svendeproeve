@@ -2,7 +2,7 @@
 
 #contentWrapper {
     width: 60%;
-    margin: 2rem auto 0 auto;
+    margin: 2rem auto 2rem auto;
     display: flex;
     flex-direction: row;
     gap: 1rem;
@@ -209,10 +209,16 @@
         }
 
         #liftsContainer {
+
             display: flex;
             flex-direction: column;
             gap: 1rem;
             max-height: 800px;
+            overflow-y: scroll;
+            
+            // &::-webkit-scrollbar {
+            //     display: none;
+            // }
 
             #liftCard {
                 display: flex;

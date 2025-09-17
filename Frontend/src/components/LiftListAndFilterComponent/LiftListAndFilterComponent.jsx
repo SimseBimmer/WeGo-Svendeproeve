@@ -17,6 +17,7 @@ import isElectric from '../../assets/images/tripDetail/isElectric.svg';
 // fra og til Icon
 import fraImg from '../../assets/images/Fra.svg';
 import tilImg from '../../assets/images/Til.svg';
+import { useNavigate } from 'react-router-dom'; // til navigation
 
 // content width wrapper
 const LiftListAndFilterComponent = ({ searchFilter }) => {
@@ -34,6 +35,7 @@ const LiftListAndFilterComponent = ({ searchFilter }) => {
         allowChildren: false,
         allowSmoking: false
     });
+    const navigate = useNavigate(); // navigation hook
 
     // Hent lifts fra backend
     useEffect(() => {
@@ -68,7 +70,7 @@ const LiftListAndFilterComponent = ({ searchFilter }) => {
     function filterLifts(lift) {
         // Filter på søgefelter (fra og til)
         if (searchFilter?.from && !lift.cityDeparture.toLowerCase().includes(searchFilter.from.toLowerCase())) return false;
-        if (searchFilter?.to && !lift.cityDestination.toLowerCase().includes(searchFilter.to.toLowerCase())) return false;
+        if (searchFilter?.to && !lift.cityDestination.toLowerCase().includes(searchFilter.toLowerCase())) return false;
         // Filter på antal ledige pladser
         const availableSeats = lift.seatsTotal - (lift.seatsBooked || 0);
         if (availableSeats < seatsFilter) return false;
@@ -184,7 +186,12 @@ const LiftListAndFilterComponent = ({ searchFilter }) => {
                 <div id='liftsContainer'>
                     {/* Viser filtrerede lifts */}
                     {lifts.filter(filterLifts).map(lift => (
-                        <div id='liftCard' key={lift.id}>
+                        <div
+                            id='liftCard'
+                            key={lift.id}
+                            style={{ cursor: 'pointer' }}
+                            onClick={() => navigate(`/LiftDetails/${lift.id}`)} // klik åbner detail page
+                        >
                             <div id='DriverInfo'>
                                 <img src={lift.user.imageUrl} alt="Driver image" />
                                 <p title={`${lift.user.firstname} ${lift.user.lastname}`}>{lift.user.firstname}</p>
