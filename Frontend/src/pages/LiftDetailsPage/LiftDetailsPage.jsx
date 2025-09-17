@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom'; // tilføj useNavigate
 // import scss 
 import './LiftDetailsPage.scss';
 // component imports
@@ -33,11 +33,17 @@ import yesImg from '../../assets/images/præferencer/yes.svg';
 import noImg from '../../assets/images/præferencer/no.svg';
 // quote icon
 import quote from '../../assets/images/quote/quotation.svg';
+// arrow icon
+import arrowImg from '../../assets/images/Arrow.svg';
+
+
+
 
 // Simpel detalje-side for lift
 const LiftDetailsPage = () => {
     // Hent id fra url
     const { id } = useParams();
+    const navigate = useNavigate(); // navigation hook
     // State til lift data
     const [lift, setLift] = useState(null);
     // Fejlbesked hvis noget går galt
@@ -110,6 +116,12 @@ const LiftDetailsPage = () => {
                 <div id='contentWrapper'>
                     {/* trip */}
                     <section id='tripSection'>
+                        <div
+                            id='backButton'
+                            onClick={() => navigate(-1)} // gå tilbage til forrige side
+                        >
+                            <img src={arrowImg} alt="Back" />
+                        </div>
                         <header id='tripHeader'>
                             <h2>{lift.cityDeparture} til {lift.cityDestination}</h2>
                             <p>{formatDate(lift.departureDate)} {formatTime(lift.departureDate)}</p>
