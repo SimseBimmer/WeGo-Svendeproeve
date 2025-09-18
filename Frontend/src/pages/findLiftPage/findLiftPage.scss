@@ -3,6 +3,7 @@
 
 main {
     min-height: 100vh;
+
     #contentWrapper {
         width: 60%;
         margin: 2rem auto 0 auto;
@@ -10,7 +11,7 @@ main {
         display: flex;
         flex-direction: row;
         gap: 1rem;
-        
+
 
 
         #komfort {
@@ -93,7 +94,5 @@ main {
             }
         }
     }
-    
+
 }
-
-

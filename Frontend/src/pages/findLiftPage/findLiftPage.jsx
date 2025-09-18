@@ -20,7 +20,7 @@ const FindLiftPage = () => {
     <>
       <main>
         <FilterComponent onSearch={handleSearch} />
-        <LiftListAndFilterComponent searchFilter={searchFilter} /> 
+        <LiftListAndFilterComponent searchFilter={searchFilter} />
       </main>
       <FooterComponent />
     </>

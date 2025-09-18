@@ -10,10 +10,12 @@
 
     #filterAside {
         width: 20%;
+        height: fit-content;
         background-color: $color-white;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         border-radius: 12px;
         padding: .5rem;
+        
 
         h3 {
             font-size: 1.3rem;
