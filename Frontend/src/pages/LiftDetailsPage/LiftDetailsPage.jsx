@@ -254,8 +254,6 @@ const LiftDetailsPage = () => {
                                         ))}
                                         <p> ({lift.user?.numReviews || 0} anmeldelser)</p>
                                     </div>
-                                    {/* Medlem siden - ikke tilgængelig i data, så vis ikke */}
-                                    {/* <p id='memberSince'>Medlem siden ...</p> */}
                                     <button>Skriv en anmeldese</button>
                                 </div>
                             </div>
