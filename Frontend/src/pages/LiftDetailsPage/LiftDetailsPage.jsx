@@ -48,6 +48,10 @@ const LiftDetailsPage = () => {
     const [lift, setLift] = useState(null);
     // Fejlbesked hvis noget går galt
     const [fejl, setFejl] = useState(null);
+    // Tjek om bruger er logget ind
+    const isLoggedIn = !!localStorage.getItem('accessToken');
+    // State til fejlbesked hvis ikke logget ind
+    const [loginError, setLoginError] = useState(false);
 
     // Hent lift data fra backend når siden loader
     useEffect(() => {
@@ -92,7 +96,14 @@ const LiftDetailsPage = () => {
         return array;
     }
 
-
+    // Funktion til book-knap
+    function handleBookClick() {
+        if (!isLoggedIn) {
+            setLoginError(true); // vis fejlbesked
+            return;
+        }
+        navigate(`/Book/${id}`);
+    }
 
     if (fejl) return <div>{fejl}</div>;
     if (!lift) return <div>Indlæser lift detaljer...</div>;
@@ -281,9 +292,23 @@ const LiftDetailsPage = () => {
                                 <p>Pris per plads</p>
                                 <p id='valuta'>DKK <span id='seatPrice'>{lift.pricePerSeat}</span></p>
                             </div>
-                            <button onClick={() => navigate(`/Book/${id}`)}>
+                            <button
+                                onClick={handleBookClick}
+                                id="bookPladsBtn"
+                                style={{
+                                    background: !isLoggedIn ? '#ccc' : '',
+                                    color: !isLoggedIn ? '#888' : '',
+                                    cursor: !isLoggedIn ? 'not-allowed' : 'pointer'
+                                }}
+                            >
                                 Book plads
                             </button>
+                            {/* Vis besked hvis user ikke logget ind */}
+                            {!isLoggedIn && (
+                                <p id="loginErrorMsg" style={{ color: 'red', marginTop: '0.5rem' }}>
+                                    Du skal være logget ind for at booke en plads
+                                </p>
+                            )}
                         </div>
                     </aside>
                 </div>

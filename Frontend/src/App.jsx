@@ -25,7 +25,14 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/" element={<ForsidePage />} />
         <Route path="/FindLift" element={<FindLiftPage />} />
         <Route path="/LiftDetails/:id" element={<LiftDetailsPage />} />
-        <Route path="/Book/:id" element={<BookPage />} />
+        <Route
+          path="/Book/:id"
+          element={
+            <ProtectedRoute>
+              <BookPage />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
