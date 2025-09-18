@@ -1,6 +1,7 @@
 @import '../../styles/variables.scss';
 
 #contentWrapper {
+
     width: 60%;
     margin: 2rem auto 2rem auto;
     display: flex;
@@ -215,7 +216,7 @@
             gap: 1rem;
             max-height: 800px;
             overflow-y: scroll;
-            
+
             // &::-webkit-scrollbar {
             //     display: none;
             // }
@@ -363,6 +364,24 @@
                         }
                     }
                 }
+            }
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    main {
+        width: 100%;
+    }
+
+    #contentWrapper {
+        #filterAside {
+            width: 100%;
+            padding: 1rem 0;
+
+            #preferencerCheckboxes {
+                flex-direction: row !important;
+                flex-wrap: wrap;
             }
         }
     }

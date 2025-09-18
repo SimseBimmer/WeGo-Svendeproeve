@@ -68,6 +68,7 @@ li a {
         padding: .5rem 1rem;
         transition: 200ms ease-in-out;
         color: $color-white;
+
         &:hover {
             background-color: $color-white;
             color: $color-dark-blue
@@ -80,13 +81,34 @@ li a {
     button {
         border-radius: 12px;
         border: 2px solid $color-dark-blue;
-        background-color: $color-dark-blue;;
+        background-color: $color-dark-blue;
+        ;
         padding: .5rem 1rem;
         transition: 200ms ease-in-out;
         color: $color-white;
+
         &:hover {
             background-color: $color-white;
             color: $color-dark-blue;
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    #globalNav {
+        margin-bottom: .5rem;
+
+        ul {
+            gap: 1.5rem;
+
+            li {
+                font-size: 1rem;
+                padding: .5rem 0;
+
+                a {
+                    font-size: 1rem;
+                }
+            }
         }
     }
 }

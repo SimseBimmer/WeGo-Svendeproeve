@@ -1,0 +1,179 @@
+@import '../../styles/variables.scss';
+
+main {
+    min-height: 100vh;
+    background-color: #F3F4F4;
+    border: 2px solid transparent;
+
+    #contentWrapper {
+        width: 60%;
+        margin: 2rem auto 0 auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 1rem;
+        border: none;
+
+        #formContainer {
+            width: 60%;
+
+            header {
+                h2 {
+                    margin-bottom: 2rem;
+                    font-size: 1.7rem;
+                    font-weight: 600;
+                    color: $color-black;
+                }
+            }
+
+            #bookForm {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: 2rem;
+
+                #formGroup {
+                    display: flex;
+                    flex-direction: column;
+
+                    label {
+                        font-size: 1.2rem;
+                        font-weight: 400;
+                        color: $color-black;
+                        margin: 0 0 .5rem 0;
+                    }
+
+                    select,
+                    input,
+                    textarea {
+                        box-sizing: border-box;
+                        width: 100%;
+                        padding: .75rem 1rem;
+                        border: 1px solid $color-light-grey;
+                        background-color: $color-white;
+                        border-radius: 8px;
+                        font-size: 1.1rem;
+                        font-weight: 400;
+                        color: $color-black;
+                        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+
+
+                        &:focus {
+                            outline: none;
+                        }
+                    }
+
+                    textarea {
+                        resize: none;
+                        height: 150px;
+                        padding: .75rem 1rem;
+                        border: 1px solid $color-light-grey;
+                        background-color: $color-white;
+                        border-radius: 12px;
+                        font-size: 1.1rem;
+                        font-weight: 400;
+                        color: $color-black;
+                        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+
+                        &:focus {
+                            outline: none;
+                        }
+                    }
+
+                }
+
+                #formRow {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    width: 100%;
+
+                }
+            }
+
+            #buttonRow {
+                display: flex;
+                flex-direction: column;
+                gap: 2rem;
+
+                button {
+                    width: 100%;
+                    padding: 1.25rem 1rem;
+                    border: none;
+                    border-radius: 999px;
+                    font-size: 1.2rem;
+                    font-weight: 600;
+                    cursor: pointer;
+                    transition: 200ms ease-in-out;
+
+                    &:hover {
+                        opacity: 0.8;
+                    }
+                }
+
+                #bookPayBtn {
+                    background-color: $color-cloud-blue;
+                    color: $color-white;
+
+                }
+
+                #backBtn {
+                    background-color: #E0FAFF;
+
+                }
+            }
+        }
+
+        #tripDetails {
+            border-radius: 12px;
+            overflow: hidden;
+            width: 30%;
+            height: fit-content;
+            display: flex;
+            flex-direction: column;
+            gap: .25rem;
+
+            #tripInfo {
+                background-color: $color-white;
+                padding: 1rem;
+
+                h3 {
+                    font-size: 1.5rem;
+                    font-weight: 600;
+                    color: $color-black;
+                    margin: 0 0 .5rem 0;
+                }
+
+                p {
+                    font-size: 1.1rem;
+                    font-weight: 400;
+                    color: $color-black;
+                    margin: 0;
+                    line-height: normal;
+                }
+            }
+
+            #price {
+                background-color: $color-white;
+                padding: 1rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                p {
+                    font-size: 1.2rem;
+                    font-weight: 600;
+                    color: $color-black;
+                    margin: 0;
+                }
+
+                #totalPrice {
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                    color: $color-cloud-blue;
+                }
+            }
+        }
+    }
+}

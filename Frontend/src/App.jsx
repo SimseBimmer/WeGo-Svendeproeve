@@ -5,8 +5,9 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import './App.scss'
 // page imports
 import ForsidePage from './pages/forsidePage/forsidePage.jsx';
-import FindLiftPage from './pages/FindLiftPage/FindLiftPage.jsx';
+import FindLiftPage from './pages/findLiftPage/findLiftPage.jsx';
 import LiftDetailsPage from './pages/LiftDetailsPage/LiftDetailsPage.jsx';
+import BookPage from './pages/BookPage/BookPage.jsx';
 // component imports 
 import HeaderComponent from './components/Header/HeaderComponent.jsx';
 
@@ -24,6 +25,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/" element={<ForsidePage />} />
         <Route path="/FindLift" element={<FindLiftPage />} />
         <Route path="/LiftDetails/:id" element={<LiftDetailsPage />} />
+        <Route path="/Book/:id" element={<BookPage />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

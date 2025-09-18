@@ -76,32 +76,23 @@ const LiftDetailsPage = () => {
     }
 
     // Helper til seat bookings
-    function getSeatsArr() {
-        // Lav et array med alle pladser, fyld op med bookings
-        const arr = [];
+    function getSeatsArray() {
+        // Returnerer et array med booked og ledige pladser
+        const array = [];
         const total = lift.seatsTotal || 0;
-        const bookings = lift.bookings || [];
-        let bookedIdx = 0;
+        const booked = lift.bookings || [];
         for (let i = 0; i < total; i++) {
-            if (bookedIdx < bookings.length && bookings[bookedIdx].numSeats > 0) {
-                arr.push(bookings[bookedIdx]);
-                bookedIdx++;
+            // Hvis der er en booking til denne plads, brug booking
+            if (i < booked.length) {
+                array.push(booked[i]);
             } else {
-                arr.push(null);
+                array.push(null); // ledig plads
             }
         }
-        return arr;
+        return array;
     }
 
-    if (!id) return (
-        <>
-            <main>
-                <h1>Ingen lift valgt</h1>
-                <p>Du skal åbne siden med et id, fx /LiftDetails/1</p>
-            </main>
-            <FooterComponent />
-        </>
-    );
+
 
     if (fejl) return <div>{fejl}</div>;
     if (!lift) return <div>Indlæser lift detaljer...</div>;
@@ -263,8 +254,7 @@ const LiftDetailsPage = () => {
                         <h2>Pladser</h2>
                         <div id='steatContainer'>
                             <ul id='seatsList'>
-                                {/* Vis alle pladser, booked eller ledig */}
-                                {getSeatsArr().map((booking, idx) => (
+                                {getSeatsArray().map((booking, idx) => (
                                     <li key={idx}>
                                         <div className='seatContainer'>
                                             {booking && booking.user ? (
@@ -277,9 +267,9 @@ const LiftDetailsPage = () => {
                                                 </>
                                             ) : (
                                                 <>
-                                                    <div id='userProfilePicture'></div>
+                                                    <div id='userProfilePicture' style={{ background: '#DFE4E7' }}></div>
                                                     <div id='userInfo'>
-                                                        <p id='dig'>Dig?</p>
+                                                        <p id='dig'>Ledig</p>
                                                     </div>
                                                 </>
                                             )}
@@ -291,7 +281,9 @@ const LiftDetailsPage = () => {
                                 <p>Pris per plads</p>
                                 <p id='valuta'>DKK <span id='seatPrice'>{lift.pricePerSeat}</span></p>
                             </div>
-                            <button>Book plads</button>
+                            <button onClick={() => navigate(`/Book/${id}`)}>
+                                Book plads
+                            </button>
                         </div>
                     </aside>
                 </div>

@@ -47,18 +47,19 @@ const ForsidePage = () => {
 
   return (
     <>
-      <div className="forsidePageWrapper">
-        <main>
-          <div id="slideshowContainer">
-            <img id="slideshowImage" src={slide.imageUrl} alt="slideshow" draggable={false} />
-            <h1 id="slideshowText" className={visText ? 'show' : 'hide'}>
-              {slide.text}
-            </h1>
-          </div>
-        </main>
-        <div id='footerContainer'>
-          <FooterComponent />
+      <div id='forsidePageContainer'>
+        <main id='forsidePageWrapper'>
+        <div id="slideshowContainer">
+          <img id="slideshowImage" src={slide.imageUrl} alt="slideshow" draggable={false} />
+          <h1 id="slideshowText" className={visText ? 'show' : 'hide'}>
+            {slide.text}
+          </h1>
         </div>
+      </main>
+      </div>
+      <div id='footerContainer'>
+      <FooterComponent />
+
       </div>
     </>
   );

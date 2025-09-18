@@ -1,15 +1,34 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ModalContainer from '../ModalContainer/ModalContainer';
 import './HowItWorksModal.scss';
 
 export default function HowItWorksModal({ onClose }) {
+    const [content, setContent] = useState('');
+    const [loading, setLoading] = useState(true);
+    const [fejl, setFejl] = useState(null);
+
+    useEffect(() => {
+        fetch('/api/content')
+            .then(res => res.ok ? res.json() : Promise.reject('Serverfejl'))
+            .then(data => {
+                // Find "Sådan virker det" content
+                const item = data.find(c => c.title === "Sådan virker det");
+                setContent(item?.content || '');
+                setLoading(false);
+            })
+            .catch(() => {
+                setFejl('Kunne ikke hente indhold.');
+                setLoading(false);
+            });
+    }, []);
+
     return (
         <ModalContainer onClose={onClose}>
-            <h2>Sådan virker det:</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean aliquam leo libero, vitae ullamcorper nunc rutrum sit amet. </p>
-            <p>Integer lobortis diam eu justo fermentum, lacinia laoreet urna efficitur. Mauris sit amet urna vulputate, vulputate turpis a.</p>
-            <p>Fusce quis rutrum odio. Integer nec euismod felis. Praesent ex justo, ultrices a neque in, facilisis condimentum ex. Cras iaculis eget nulla a vestibulum. Donec suscipit eu nunc in dictum. Vestibulum congue scelerisque velit, ut tempus urna dictum eu. </p>
-
+            {loading && <p>Indlæser...</p>}
+            {fejl && <p style={{ color: 'red' }}>{fejl}</p>}
+            {!loading && !fejl && (
+                <div dangerouslySetInnerHTML={{ __html: content }} />
+            )}
         </ModalContainer>
     );
 }

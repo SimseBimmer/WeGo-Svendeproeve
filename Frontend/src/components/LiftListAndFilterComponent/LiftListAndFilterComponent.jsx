@@ -70,7 +70,7 @@ const LiftListAndFilterComponent = ({ searchFilter }) => {
     function filterLifts(lift) {
         // Filter på søgefelter (fra og til)
         if (searchFilter?.from && !lift.cityDeparture.toLowerCase().includes(searchFilter.from.toLowerCase())) return false;
-        if (searchFilter?.to && !lift.cityDestination.toLowerCase().includes(searchFilter.toLowerCase())) return false;
+        if (searchFilter?.to && !lift.cityDestination.toLowerCase().includes(searchFilter.to.toLowerCase())) return false;
         // Filter på antal ledige pladser
         const availableSeats = lift.seatsTotal - (lift.seatsBooked || 0);
         if (availableSeats < seatsFilter) return false;
@@ -239,8 +239,8 @@ const LiftListAndFilterComponent = ({ searchFilter }) => {
                                         {[...Array(lift.seatsTotal)].map((_, i) => (
                                             <img
                                                 key={i}
-                                                src={i < (lift.seatsTotal - (lift.seatsBooked || 0)) ? greenCircle : redCircle}
-                                                alt={i < (lift.seatsTotal - (lift.seatsBooked || 0)) ? "available seat" : "unavailable seat"}
+                                                src={i < (lift.seatsBooked || 0) ? redCircle : greenCircle}
+                                                alt={i < (lift.seatsBooked || 0) ? "booked seat" : "available seat"}
                                             />
                                         ))}
                                     </div>
