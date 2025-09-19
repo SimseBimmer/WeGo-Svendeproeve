@@ -3,18 +3,18 @@ import './forsidePage.scss';
 import '../../App.scss';
 import FooterComponent from '../../components/FooterComponent/footerComponent.jsx';
 
-// Simpelt slideshow, kun tekst har fade
+// Simpelt slideshow med fade på tekst
 const ForsidePage = () => {
-  // slides: gemmer slides fra backend
+  // slides: array med slides fra backend
   const [slides, setSlides] = useState([]);
-  // current: hvilket slide vises nu
+  // current: index for nuværende slide
   const [current, setCurrent] = useState(0);
-  // visText: styrer om tekst skal vises
+  // visText: styrer fade på tekst
   const [visText, setVisText] = useState(false);
-  // fejl: hvis der er fejl fra server
+  // fejl: hvis fetch fejler
   const [fejl, setFejl] = useState(null);
 
-  // Hent slides når siden loader
+  // Hent slides fra backend når siden loader
   useEffect(() => {
     fetch('/api/slides')
       .then(res => res.ok ? res.json() : Promise.reject('Serverfejl'))
@@ -25,41 +25,39 @@ const ForsidePage = () => {
       .catch(() => setFejl('Kunne ikke hente slideshow fra serveren.'));
   }, []);
 
-  // Skift slide og styr tekst-timing
+  // Skift slide automatisk hvert 6. sekund
   useEffect(() => {
     if (slides.length === 0) return;
-    setVisText(false);
-    const show = setTimeout(() => setVisText(true), 500); // vis tekst efter 0.5sekunder
-    const hide = setTimeout(() => setVisText(false), 5000); // skjul tekst 1 sekund før slide
-    const next = setTimeout(() => setCurrent((c) => (c + 1) % slides.length), 6000); // næste slide efter 6
-    return () => {
-      clearTimeout(show);
-      clearTimeout(hide);
-      clearTimeout(next);
-    };
+    setVisText(true);
+    const timer = setTimeout(() => {
+      setVisText(false);
+      setTimeout(() => {
+        setCurrent((c) => (c + 1) % slides.length);
+        setVisText(true);
+      }, 500); // fade ud tekst før næste slide
+    }, 6000);
+    return () => clearTimeout(timer);
   }, [current, slides]);
 
   if (fejl) return <div id="slideshowError">{fejl}</div>;
   if (slides.length === 0) return <div id="slideshowLoading">Indlæser slideshow...</div>;
 
-  // current slide
   const slide = slides[current];
 
   return (
     <>
       <div id='forsidePageContainer'>
         <main id='forsidePageWrapper'>
-        <div id="slideshowContainer">
-          <img id="slideshowImage" src={slide.imageUrl} alt="slideshow" draggable={false} />
-          <h1 id="slideshowText" className={visText ? 'show' : 'hide'}>
-            {slide.text}
-          </h1>
-        </div>
-      </main>
+          <div id="slideshowContainer">
+            <img id="slideshowImage" src={slide.imageUrl} alt="slideshow" draggable={false} />
+            <h1 id="slideshowText" className={visText ? 'show' : 'hide'}>
+              {slide.text}
+            </h1>
+          </div>
+        </main>
       </div>
       <div id='footerContainer'>
-      <FooterComponent />
-
+        <FooterComponent />
       </div>
     </>
   );

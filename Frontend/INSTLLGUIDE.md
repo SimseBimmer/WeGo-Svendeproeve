@@ -1,4 +1,3 @@
-
 # Kom i gang
 
 ## Installation
@@ -35,6 +34,8 @@ npm run seed
 Email: info@webudvikler.dk
 Adgangskode: password
 ```
+
+"Man skal oprette en ny konto før book funktionen virker. Admin-kontoen kan ikke bruges til booking."
 
 
 

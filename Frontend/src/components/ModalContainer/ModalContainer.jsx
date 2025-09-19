@@ -14,7 +14,6 @@ export default function ModalContainer({ children, onClose }) {
         <div id="modalBackdrop" onClick={handleBackdropClick}>
             <div id="modalBox">
                 <button id="closeModalBtn" onClick={onClose}>
-                    {/* Luk-knap */}
                     ×
                 </button>
                 {children}

@@ -36,7 +36,7 @@ export default function LoginModal({ onClose, onLoginSuccess }) {
         setLoginLoading(true);
         try {
             // Kald til backend for login
-            const res = await fetch('http://localhost:4000/api/auth/login', {
+            const res = await fetch('/api/auth/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ username: loginEmail, password: loginPassword })
@@ -76,7 +76,7 @@ export default function LoginModal({ onClose, onLoginSuccess }) {
         setSignupLoading(true);
         try {
             // Her sendes POST request til backend for at oprette bruger
-            const res = await fetch('http://localhost:4000/api/users', {
+            const res = await fetch('/api/users', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
